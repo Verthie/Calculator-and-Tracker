@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Net Worth Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="main">
+      <div class="container">
+        <div class="wrapper" id="assetsForm">
+          <div class="buttonWrapper">
+            <button class="tab-button active" style="border-bottom-left-radius: 10px;" data-id="cash">Cash</button>
+            <button class="tab-button" data-id="investments">Investments</button>
+            <button class="tab-button" data-id="retirement">Retirement</button>
+            <button class="tab-button" data-id="business">Business</button>
+            <button class="tab-button" style="border-bottom-right-radius: 10px;" data-id="assets">Use Assets</button>
+          </div>
+          <div class="contentWrapper">
+            <form id="netWorthForm">
+              <h2>Assets</h2>
+
+              <div class="content active" id="cash">
+                <div class="section">
+                  <h3>Cash</h3>
+                  <div class="form-group">
+                    <label for="checking"><i class="fas fa-wallet"></i> Checking accounts:</label>
+                    <input type="number" id="checking" value="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="savings"><i class="fas fa-piggy-bank"></i> Savings accounts:</label>
+                    <input type="number" id="savings" value="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="moneyMarket"><i class="fas fa-chart-line"></i> Money market accounts:</label>
+                    <input type="number" id="moneyMarket" value="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="savingsBonds"><i class="fas fa-hand-holding-usd"></i> Savings bonds:</label>
+                    <input type="number" id="savingsBonds" value="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="cds"><i class="fas fa-compact-disc"></i> CDs:</label>
+                    <input type="number" id="cds" value="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="otherCash"><i class="fas fa-money-bill-wave"></i> Other (cash):</label>
+                    <input type="number" id="otherCash" value="0" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="content" id="investments">
+                <div class="section">
+                  <h3>Investments</h3>
+                  <div class="form-group">
+                    <label for="brokerage"><i class="fas fa-briefcase"></i> Brokerage:</label>
+                    <input type="number" id="brokerage" value="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="otherInvested"><i class="fas fa-chart-pie"></i> Other (invested):</label>
+                    <input type="number" id="otherInvested" value="0" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="content" id="retirement">
+                <div class="section">
+                  <h3>Retirement</h3>
+                  <div class="form-group">
+                    <label for="ira"><i class="fas fa-university"></i> IRA:</label>
+                    <input type="number" id="ira" value="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="rothIra"><i class="fas fa-university"></i> Roth IRA:</label>
+                    <input type="number" id="rothIra" value="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="retirement"><i class="fas fa-user-shield"></i> 401(k)/403(b)/TSP/457(b):</label>
+                    <input type="number" id="retirement" value="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="rothRetirement"><i class="fas fa-user-shield"></i> Roth 401(k)/403(b)/TSP/457(b):</label>
+                    <input type="number" id="rothRetirement" value="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="hsa"><i class="fas fa-heartbeat"></i> HSA:</label>
+                    <input type="number" id="hsa" value="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="sepIra"><i class="fas fa-university"></i> SEP-IRA:</label>
+                    <input type="number" id="sepIra" value="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="pension"><i class="fas fa-money-check-alt"></i> Pension (vested benefit):</label>
+                    <input type="number" id="pension" value="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="annuity"><i class="fas fa-file-contract"></i> Annuity (accumulated value):</label>
+                    <input type="number" id="annuity" value="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="otherRetirement"><i class="fas fa-university"></i> Other (retirement):</label>
+                    <input type="number" id="otherRetirement" value="0" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="content" id="business">
+                <div class="section">
+                  <h3>Business</h3>
+                  <div class="form-group">
+                    <label for="realEstate"><i class="fas fa-building"></i> Real estate (rental property or land):</label>
+                    <input type="number" id="realEstate" value="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="soleProprietorship"><i class="fas fa-user-tie"></i> Sole proprietorship:</label>
+                    <input type="number" id="soleProprietorship" value="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="partnership"><i class="fas fa-handshake"></i> Partnership:</label>
+                    <input type="number" id="partnership" value="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="cCorporation"><i class="fas fa-building"></i> C Corporation:</label>
+                    <input type="number" id="cCorporation" value="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="sCorporation"><i class="fas fa-building"></i> S Corporation:</label>
+                    <input type="number" id="sCorporation" value="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="llc"><i class="fas fa-building"></i> Limited liability company:</label>
+                    <input type="number" id="llc" value="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="otherBusiness"><i class="fas fa-briefcase"></i> Other (business):</label>
+                    <input type="number" id="otherBusiness" value="0" />
+                  </div>
+                </div>
+              </div> 
+
+              <div class="content" id="assets">
+                <div class="section">
+                  <h3>Use Assets</h3>
+                  <div class="form-group">
+                    <label for="principalHome"><i class="fas fa-home"></i> Principal home:</label>
+                    <input type="number" id="principalHome" value="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="vacationHome"><i class="fas fa-umbrella-beach"></i> Vacation home:</label>
+                    <input type="number" id="vacationHome" value="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="vehicles"><i class="fas fa-car"></i> Cars, trucks, boats:</label>
+                    <input type="number" id="vehicles" value="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="homeFurnishings"><i class="fas fa-couch"></i> Home furnishings:</label>
+                    <input type="number" id="homeFurnishings" value="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="art"><i class="fas fa-palette"></i> Art, antiques, coins, collectibles:</label>
+                    <input type="number" id="art" value="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="jewelry"><i class="fas fa-gem"></i> Jewelry, furs:</label>
+                    <input type="number" id="jewelry" value="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="otherUse"><i class="fas fa-box"></i> Other (use assets):</label>
+                    <input type="number" id="otherUse" value="0" />
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="wrapper" id="liabilitiesForm">
+          <div class="buttonWrapper">
+            <button class="tab-button active" style="border-bottom-left-radius: 10px;" data-id="current">Current</button>
+            <button class="tab-button" style="border-bottom-right-radius: 10px;" data-id="longterm">Long-Term</button>
+          </div>
+          <div class="contentWrapper">
+            <form id="netWorthForm">
+              <h2>Liabilities</h2>
+
+              <div class="content active" id="current">
+                <div class="section">
+                  <h3>Current</h3>
+                  <div class="form-group">
+                    <label for="creditCard"><i class="fas fa-credit-card"></i> Credit card balances:</label>
+                    <input type="number" id="creditCard" value="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="taxOwed"><i class="fas fa-receipt"></i> Estimated income tax owed:</label>
+                    <input type="number" id="taxOwed" value="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="outstandingBills"><i class="fas fa-file-invoice"></i> Other outstanding bills:</label>
+                    <input type="number" id="outstandingBills" value="0" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="content" id="longterm">
+                <div class="section">
+                  <h3>Long-term</h3>
+                  <div class="form-group">
+                    <label for="homeMortgage"><i class="fas fa-home"></i> Home mortgage:</label>
+                    <input type="number" id="homeMortgage" value="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="homeEquityLoan"><i class="fas fa-home"></i> Home equity loan:</label>
+                    <input type="number" id="homeEquityLoan" value="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="rentalMortgage"><i class="fas fa-building"></i> Mortgages on rental properties:</label>
+                    <input type="number" id="rentalMortgage" value="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="carLoans"><i class="fas fa-car"></i> Car loans:</label>
+                    <input type="number" id="carLoans" value="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="studentLoans"><i class="fas fa-graduation-cap"></i> Student loans:</label>
+                    <input type="number" id="studentLoans" value="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="lifeInsuranceLoans"
+                      ><i class="fas fa-file-invoice-dollar"></i> Life insurance policy loans:</label
+                    >
+                    <input type="number" id="lifeInsuranceLoans" value="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="otherDebt"><i class="fas fa-file-alt"></i> Other long-term debt:</label>
+                    <input type="number" id="otherDebt" value="0" />
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="container" id="calculate">
+        <form id="netWorthForm">
+          <!-- 3 Kolumna -->
+          <button class="btn-calculate" type="button" onclick="calculateNetWorth()">Calculate Net Worth</button>
+        </form>
+        <div id="result">
+          <h2>Your Net Worth</br><span id="netWorth">$0.00</span></h2>
+        </div>
+        <ul id="historyList">
+
+        </ul>
+      </div>
+      <script src="app.js"></script>
+    </div>
+  </body>
+</html>
