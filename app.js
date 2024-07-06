@@ -108,7 +108,10 @@ function calculateNetWorth() {
 
 function addNetWorthToHistory(netWorth) {
   const listItem = document.createElement('li');
-  listItem.textContent = `Net Worth: $${netWorth.toFixed(2)} on ${new Date().toLocaleDateString()}`;
+  const date = new Date();
+  listItem.textContent = `Net Worth: $${netWorth.toFixed(2)} on ${date.toLocaleDateString()}`;
+
+  listItem.setAttribute('data-date', date);
 
   if (lists) {
     lists += `${listItem.outerHTML}`;
@@ -132,4 +135,69 @@ function addNetWorthToHistory(netWorth) {
 function deleteHistory() {
   localStorage.clear();
   location.reload();
+}
+
+function generateRaport() {
+  const startDate = new Date(document.getElementById('startDate').value);
+  const endDate = new Date(document.getElementById('endDate').value);
+
+  if (isNaN(startDate) || isNaN(endDate)) {
+    alert('Please enter valid start and end dates.');
+    return;
+  }
+
+  const historyItems = historyList.querySelectorAll('li');
+  const filteredItems = Array.from(historyItems).filter(item => {
+    const itemDate = new Date(item.getAttribute('data-date'));
+    console.log(item.getAttribute('data-date'));
+    console.log(startDate);
+    return itemDate >= startDate && itemDate <= endDate;
+  });
+
+  if (filteredItems.length === 0) {
+    alert('No records found for the specified date range.');
+    return;
+  }
+
+  const reportWindow = window.open('', 'Report', 'width=800,height=600');
+  reportWindow.document.write('<html><head><title>Net Worth Report</title>');
+  reportWindow.document.write('<style>');
+  reportWindow.document.write(`
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    h1 {
+      color: #007bff;
+    }
+    p {
+      font-size: 1.1em;
+      color: #666;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      background: #f4f4f4;
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+  `);
+  reportWindow.document.write('</style>');
+  reportWindow.document.write('</head><body>');
+  reportWindow.document.write('<h1>Net Worth Report</h1>');
+  reportWindow.document.write(`<p>From: ${startDate.toLocaleDateString()} To: ${endDate.toLocaleDateString()}</p>`);
+  reportWindow.document.write('<ul>');
+
+  filteredItems.forEach(item => {
+    reportWindow.document.write(`<li>${item.textContent}</li>`);
+  });
+
+  reportWindow.document.write('</ul>');
+  reportWindow.document.write('</body></html>');
+  reportWindow.document.close();
 }
