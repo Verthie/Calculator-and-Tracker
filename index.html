@@ -248,17 +248,28 @@
         </div>
       </div>
 
-      <div class="container" id="calculate">
-        <form id="netWorthForm">
-          <!-- 3 Kolumna -->
-          <button class="btn-calculate" type="button" onclick="calculateNetWorth()">Calculate Net Worth</button>
-        </form>
-        <div id="result">
-          <h2>Your Net Worth</br><span id="netWorth">$0.00</span></h2>
+      <div>
+        <div class="container" id="calculate">
+          <form id="netWorthForm">
+            <!-- 3 Kolumna -->
+            <button class="btn-standard" type="button" onclick="calculateNetWorth()">Calculate Net Worth</button>
+          </form>
+          <div id="result">
+            <h2>Your Net Worth</br><span id="netWorth">$0.00</span></h2>
+          </div>
+          <ul id="historyList">
+            
+          </ul>
         </div>
-        <ul id="historyList">
-
-        </ul>
+        <div class="container" id="raport">
+          <div class="form-group">
+            <span>Start Date:</span><input type="date" id="startDate" />
+          </div>
+          <div class="form-group">
+            <span>Start Date:</span><input type="date" id="endDate" />
+          </div>
+          <button class="btn-standard" type="button" onclick="generateRaport()">Generate Raport</button>
+        </div>
       </div>
       <script src="app.js"></script>
     </div>
